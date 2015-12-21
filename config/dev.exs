@@ -36,7 +36,8 @@ config :phoenix, :stacktrace_depth, 20
 config :borrowers_backend, BorrowersBackend.Repo,
   adapter: Ecto.Adapters.Postgres,
   username: "postgres",
-  password: "postgres",
+  password: "",
   database: "borrowers_backend_dev",
-  hostname: "localhost",
+  hostname: "192.168.99.100",
+  port: 32768,
   pool_size: 10

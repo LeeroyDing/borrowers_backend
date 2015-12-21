@@ -35,5 +35,6 @@ defmodule BorrowersBackend.Endpoint do
     key: "_borrowers_backend_key",
     signing_salt: "FbgL0/0k"
 
-  plug BorrowersBackend.Router
+    plug Corsica, [origins: ["http://localhost:4200"]]
+    plug BorrowersBackend.Router
 end
