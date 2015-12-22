@@ -9,7 +9,9 @@ defmodule BorrowersBackend.Router do
 
   scope "/api", BorrowersBackend do
     pipe_through :api
+    
     resources "/friends", FriendController
+    options   "/friends", FriendController, :options
   end
 
 end
