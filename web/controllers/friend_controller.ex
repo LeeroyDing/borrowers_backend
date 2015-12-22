@@ -3,14 +3,14 @@ defmodule BorrowersBackend.FriendController do
 
   alias BorrowersBackend.Friend
 
-  plug :scrub_params, "friend" when action in [:create, :update]
+  plug :scrub_params, "data" when action in [:create, :update]
 
   def index(conn, _params) do
     friends = Repo.all(Friend)
     render(conn, "index.json", friends: friends)
   end
 
-  def create(conn, %{"friend" => friend_params}) do
+  def create(%Plug.Conn{method: "POST"} = conn, %{"data" => %{"attributes" => friend_params}}) do
     changeset = Friend.changeset(%Friend{}, friend_params)
 
     case Repo.insert(changeset) do
