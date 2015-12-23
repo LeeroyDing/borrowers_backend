@@ -26,7 +26,7 @@ defmodule BorrowersBackend.FriendController do
     end
   end
 
-  def show(conn, %{"id" => id}) do
+  def show(%Plug.Conn{method: "GET"} = conn, %{"id" => id}) do
     friend = Repo.get!(Friend, id)
     render(conn, "show.json", friend: friend)
   end
