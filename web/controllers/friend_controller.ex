@@ -31,7 +31,7 @@ defmodule BorrowersBackend.FriendController do
     render(conn, "show.json", friend: friend)
   end
 
-  def update(conn, %{"id" => id, "friend" => friend_params}) do
+  def update(%Plug.Conn{method: "PATCH"} = conn, %{"data" => %{"attributes" => friend_params}, "id" => id}) do
     friend = Repo.get!(Friend, id)
     changeset = Friend.changeset(friend, friend_params)
 
