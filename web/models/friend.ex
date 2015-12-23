@@ -6,13 +6,12 @@ defmodule BorrowersBackend.Friend do
     field :last_name, :string
     field :email, :string
     field :twitter, :string
-    field :total_articles, :integer, default: 0
 
     timestamps
   end
 
   @required_fields ~w(first_name last_name email twitter)
-  @optional_fields ~w(total_articles)
+  @optional_fields ~w()
 
   @doc """
   Creates a changeset based on the `model` and `params`.
