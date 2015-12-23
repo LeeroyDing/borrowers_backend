@@ -35,7 +35,7 @@ defmodule BorrowersBackend.Mixfile do
      {:postgrex, ">= 0.0.0"},
      {:phoenix_live_reload, "~> 1.0", only: :dev},
      {:cowboy, "~> 1.0"},
-     {:ja_serializer, "~> 0.6.0"},
+     {:ja_serializer, "~> 0.6.1"},
      {:corsica, "~> 0.4"}]
   end
 

@@ -45,7 +45,7 @@ defmodule BorrowersBackend.FriendController do
     end
   end
 
-  def delete(conn, %{"id" => id}) do
+  def delete(%Plug.Conn{method: "DELETE"} = conn, %{"id" => id}) do
     friend = Repo.get!(Friend, id)
 
     # Here we use delete! (with a bang) because we expect
