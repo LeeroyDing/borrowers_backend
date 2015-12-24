@@ -1,18 +1,17 @@
-defmodule BorrowersBackend.Friend do
+defmodule BorrowersBackend.Article do
   use BorrowersBackend.Web, :model
 
-  schema "friends" do
-    field :first_name, :string
-    field :last_name, :string
-    field :email, :string
-    field :twitter, :string
-    
-    has_many :articles, BorrowersBackend.Article
+  schema "articles" do
+    field :created_at, Ecto.Date
+    field :description, :string
+    field :notes, :string
+    field :state, :string
+    belongs_to :friend, BorrowersBackend.Friend
 
     timestamps
   end
 
-  @required_fields ~w(first_name last_name email twitter)
+  @required_fields ~w(created_at description notes state friend_id)
   @optional_fields ~w()
 
   @doc """

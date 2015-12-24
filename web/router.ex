@@ -12,6 +12,8 @@ defmodule BorrowersBackend.Router do
     
     resources "/friends", FriendController
     options   "/friends", FriendController, :options
+    resources "/articles", ArticleController
+    options   "/articles", ArticleController, :options
   end
 
 end
