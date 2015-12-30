@@ -3,6 +3,8 @@ defmodule BorrowersBackend.FriendView do
 
   attributes [:first_name, :last_name, :email, :twitter]
   
-  has_many :articles
+  has_many :articles,
+    include: true,
+    serializer: BorrowersBackend.ArticleView
   
 end

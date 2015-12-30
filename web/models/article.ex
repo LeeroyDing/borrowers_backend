@@ -2,7 +2,6 @@ defmodule BorrowersBackend.Article do
   use BorrowersBackend.Web, :model
 
   schema "articles" do
-    field :created_at, Ecto.Date
     field :description, :string
     field :notes, :string
     field :state, :string
@@ -11,7 +10,7 @@ defmodule BorrowersBackend.Article do
     timestamps
   end
 
-  @required_fields ~w(created_at description notes state friend_id)
+  @required_fields ~w(description notes state friend_id)
   @optional_fields ~w()
 
   @doc """

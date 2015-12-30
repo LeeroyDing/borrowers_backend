@@ -10,8 +10,8 @@ defmodule BorrowersBackend.ArticleController do
     render(conn, "index.json", articles: articles)
   end
 
-  def create(%Plug.Conn{method: "POST"} = conn, %{"data" => %{"attributes" => article_params}}) do
-    changeset = Article.changeset(%Article{}, article_params)
+  def create(%Plug.Conn{method: "POST"} = conn, params) do
+    changeset = Article.changeset(%Article{}, create_params(params))
 
     case Repo.insert(changeset) do
       {:ok, article} ->
@@ -54,4 +54,14 @@ defmodule BorrowersBackend.ArticleController do
 
     send_resp(conn, :no_content, "")
   end
+
+  defp create_params(%{"data" => %{"attributes" => article_attributes,
+                                   "relationships" => %{
+                                     "friend" => %{"data" => %{"id" => friend_id}}
+                                   }
+                                  }}) do
+    article_attributes
+    |> Dict.put_new("friend_id", friend_id)
+  end
+  
 end
