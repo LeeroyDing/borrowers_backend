@@ -7,6 +7,7 @@ defmodule BorrowersBackend.FriendController do
 
   def index(conn, _params) do
     friends = Repo.all(Friend)
+    friends = Repo.preload(friends, [:articles])
     render(conn, "index.json", friends: friends)
   end
 
@@ -28,7 +29,7 @@ defmodule BorrowersBackend.FriendController do
 
   def show(%Plug.Conn{method: "GET"} = conn, %{"id" => id}) do
     friend = Repo.get!(Friend, id)
-    friend = Repo.preload(friend, :articles)
+    friend = Repo.preload(friend, [:articles])
     render(conn, "show.json", friend: friend)
   end
 
